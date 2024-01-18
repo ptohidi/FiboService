@@ -1,4 +1,6 @@
-from utils import Verbosity, Matrix2x2, mat_mul
+from utils import Matrix2x2, Verbosity, mat_mul
+
+
 class FibMachine:
     def __init__(self) -> None:
         self.cache: dict[int, int]
@@ -61,7 +63,11 @@ class FibMachine:
                             if verbosity == Verbosity.HIGH:
                                 print(f"prod_mul {prod_pow}")
                                 print(f"prod_cache before mul: {self.prod_cache}")
-                    self.cache[prod_pow + 1], self.cache[prod_pow], self.cache[prod_pow - 1] = (
+                    (
+                        self.cache[prod_pow + 1],
+                        self.cache[prod_pow],
+                        self.cache[prod_pow - 1],
+                    ) = (
                         prod[0],
                         prod[1],
                         prod[3],
@@ -81,10 +87,19 @@ class FibMachine:
                 break
             pow_A <<= 1
             if pow_A in self.prod_cache:
-                A = (self.cache[pow_A + 1], self.cache[pow_A], self.cache[pow_A], self.cache[pow_A - 1])
+                A = (
+                    self.cache[pow_A + 1],
+                    self.cache[pow_A],
+                    self.cache[pow_A],
+                    self.cache[pow_A - 1],
+                )
             else:
                 A = mat_mul(A, A)
-                self.cache[pow_A + 1], self.cache[pow_A], self.cache[pow_A - 1] = A[0], A[1], A[3]
+                self.cache[pow_A + 1], self.cache[pow_A], self.cache[pow_A - 1] = (
+                    A[0],
+                    A[1],
+                    A[3],
+                )
                 if test:
                     try:
                         assert A[0] == A[1] + A[3]
@@ -104,25 +119,23 @@ class FibMachine:
         if verbosity in (Verbosity.MEDIUM, Verbosity.HIGH):
             print(f"({bin(num)[2:].zfill(l_bits)})_2, f({fib_arg}) = {prod[read_ind]}")
         return prod[read_ind]
-    
+
     def reset_counters(self) -> None:
         self.prod_mul_ctr = 0
         self.pow_mul_ctr = 0
         return None
-    
+
     def print_counters(self) -> None:
         print(f"matmul ops for prod: {self.prod_mul_ctr}")
         print(f"matmul ops for pow: {self.pow_mul_ctr}")
         return None
-    
+
     def reset_caches(self) -> None:
         self.cache = {0: 0, 1: 1, 2: 1}
         self.prod_cache = set([1])
         return None
-    
+
     def print_caches(self) -> None:
         print(f"cache: {self.cache}")
         print(f"prod_cache: {self.prod_cache}")
         return None
-    
-    

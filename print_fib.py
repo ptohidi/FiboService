@@ -1,6 +1,7 @@
 import argparse
-from utils import str_to_verbosity, Verbosity
+
 from core import FibMachine
+from utils import Verbosity, str_to_verbosity
 
 
 def main(
