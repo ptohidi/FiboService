@@ -9,6 +9,7 @@ class FibMachine:
         self.prod_mul_ctr: int
         self.pow_mul_ctr: int
         self.reset_counters()
+        return None
 
     def fibonacci(
         self,
@@ -25,22 +26,23 @@ class FibMachine:
         Returns:
             int: the nth fibonacci number
         """
+
+        if verbosity == Verbosity.HIGH:
+            print("*" * 40)
+            print(f"f({n}):")
+
         if n in self.cache:
+            if verbosity == Verbosity.HIGH:
+                print(f"cache hit: {n}")
             return self.cache[n]
         prod: Matrix2x2 | None = None  # (1, 0, 0, 1)
         A: Matrix2x2 = (1, 1, 1, 0)
 
-        min_mult: int = n.bit_count() + n.bit_length() - 2
-        read_ind: int = 1
-        mults: int
-        num: int
-        fib_arg: int = n
-        for num, curr_ind in zip([n - 1, n + 1], [0, 3]):
-            if (mults := num.bit_count() + num.bit_length() - 2) < min_mult:
-                min_mult = mults
-                n = num
-                read_ind = curr_ind
-        num = n
+        n, read_ind = self.find_read_ind(n)
+
+        if verbosity == Verbosity.HIGH:
+            print(f"exponent used: ({bin(n)[2:].zfill(l_bits)})_2")
+
         pow_A: int = 1
         prod_pow: int = 0
         while True:
@@ -116,9 +118,16 @@ class FibMachine:
                 self.prod_cache.add(pow_A)
         if not prod:
             raise ValueError("prod is None")
-        if verbosity in (Verbosity.MEDIUM, Verbosity.HIGH):
-            print(f"({bin(num)[2:].zfill(l_bits)})_2, f({fib_arg}) = {prod[read_ind]}")
         return prod[read_ind]
+
+    @staticmethod
+    def find_read_ind(n: int) -> tuple[int, int]:
+        read_ind: int
+        n, read_ind = min(
+            zip([n - 1, n, n + 1], [0, 1, 3]),
+            key=lambda x: x[0].bit_count() + x[0].bit_length() - 2,
+        )
+        return n, read_ind
 
     def reset_counters(self) -> None:
         self.prod_mul_ctr = 0
