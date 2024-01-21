@@ -2,6 +2,8 @@ from utils import Matrix2x2, Verbosity, mat_mul
 
 
 class FibMachine:
+    """calculates fibonacci numbers using matrix multiplication and caches the results"""
+
     def __init__(self) -> None:
         self.cache: dict[int, int]
         self.prod_cache: set[int]
