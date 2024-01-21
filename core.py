@@ -26,7 +26,7 @@ class FibMachine:
             n (int): the index of the fibonacci number to calculate
 
         Returns:
-            int: the nth fibonacci number
+            f(n) (int): the n-th fibonacci number
         """
 
         if verbosity == Verbosity.HIGH:
@@ -124,6 +124,15 @@ class FibMachine:
 
     @staticmethod
     def find_read_ind(n: int) -> tuple[int, int]:
+        """finds the index of the fibonacci number to read from the matrix multiplication result
+
+        Args:
+            n (int): the index of the fibonacci number to calculate
+
+        Returns:
+            n (int): the exponent of the matrix to calculate
+            read_ind (int): the index of the result matrix to read the fibonacci number from
+        """
         read_ind: int
         n, read_ind = min(
             zip([n - 1, n, n + 1], [0, 1, 3]),
