@@ -1,4 +1,4 @@
-from utils import Matrix2x2, Verbosity, mat_mul
+from .utils import Matrix2x2, Verbosity, mat_mul
 
 
 class FibMachine:

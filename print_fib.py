@@ -1,7 +1,7 @@
 import argparse
 
-from core import FibMachine
-from utils import Verbosity, check_positive, str_to_verbosity
+from FiboService.core import FibMachine
+from FiboService.utils import Verbosity, check_positive, str_to_verbosity
 
 
 def main(
