@@ -23,7 +23,7 @@ class FibMachine:
         """calculates the nth fibonacci number
 
         Args:
-            n (int): the index of the fibonacci number to calculate
+            n (int): the positive index of the fibonacci number to calculate
 
         Returns:
             f(n) (int): the n-th fibonacci number
