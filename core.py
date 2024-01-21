@@ -135,16 +135,19 @@ class FibMachine:
         return None
 
     def print_counters(self) -> None:
+        """prints the number of matrix multiplications used to calculate the fibonacci numbers."""
         print(f"matmul ops for prod: {self.prod_mul_ctr}")
         print(f"matmul ops for pow: {self.pow_mul_ctr}")
         return None
 
     def reset_caches(self) -> None:
+        """resets the caches used to calculate the fibonacci numbers."""
         self.cache = {0: 0, 1: 1, 2: 1}
         self.prod_cache = set([1])
         return None
 
     def print_caches(self) -> None:
+        """prints the caches used to calculate the fibonacci numbers."""
         print(f"cache: {self.cache}")
         print(f"prod_cache: {self.prod_cache}")
         return None
