@@ -1,7 +1,7 @@
 import argparse
 
 from core import FibMachine
-from utils import Verbosity, check_positive, str_to_verbosity
+from utils import Verbosity, str_to_verbosity
 
 
 def main(
@@ -27,8 +27,7 @@ def main(
         )
         if not curr_fib:
             return None
-        if verbosity == Verbosity.LOW:
-            print(f"f({i}) = {curr_fib}")
+        print(f"f({i}) = {curr_fib}")
         if test:
             fibo_seq.append(curr_fib)
     if args.verbosity in (Verbosity.MEDIUM, Verbosity.HIGH):
@@ -56,15 +55,14 @@ if __name__ == "__main__":
     parser.add_argument(
         "-n",
         "--max_fib",
+        type=int,
         default=8,
-        type=check_positive,
-        required=True,
         help="max index of fibonacci number to calculate",
     )
     parser.add_argument(
         "-m",
         "--min_fib",
-        type=check_positive,
+        type=int,
         default=-1,
         help="min index of fibonacci number to calculate",
     )
