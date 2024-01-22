@@ -1,6 +1,6 @@
 # FiboService
 
-<a href="https://zenodo.org/doi/10.5281/zenodo.10547554"><img src="https://zenodo.org/badge/744736357.svg" alt="DOI"></a>
+[![DOI](https://zenodo.org/badge/744736357.svg)](https://zenodo.org/doi/10.5281/zenodo.10547554)
 
 FiboService is a Python package that I have made for practicing purposes. It calculates Fibonacci numbers using 2x2 matrix multiplication and caches the results for faster calculation.
 
