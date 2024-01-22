@@ -31,7 +31,8 @@ We can calculate $A^n$ using the binary representation of $n$ and the following 
 A^n = \begin{cases} A^{\frac{n}{2}} \times A^{\frac{n}{2}} & \text{if } n \text{ is even} \\ A^{n-1} \times A & \text{if } n \text{ is odd} \end{cases}.
 ```
 
-Using this approach, we can calculate $A^n$ in $O(\log n)$ operations. Specifically, using this approach, the number of matrix multiplications needed to calculate $A^n$ is equal to the number of ones in the binary representation of $n$ plus the length of the binary representation of $n$ minus 2.
+Using this approach, we can calculate $A^n$ in $O(\log n)$ operations.
+Specifically, the number of matrix multiplications needed to calculate $A^n$ is equal to the number of ones in the binary representation of $n$ plus the length of the binary representation of $n$ minus 2.
 
 ## License
 
