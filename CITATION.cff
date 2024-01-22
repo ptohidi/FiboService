@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it as below.
+authors:
+- family-names: "Tohidi"
+  given-names: "Pouria"
+  orcid: "https://orcid.org/0000-0003-1477-7577"
+title: "FiboService"
+version: 0.1
+date-released: 2024-01-15
+url: "https://github.com/ptohidi/FiboService"
