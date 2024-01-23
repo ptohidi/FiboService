@@ -78,9 +78,6 @@ if __name__ == "__main__":
     )
     parser.add_argument("-t", "--test", action="store_true", help="run tests")
     args = parser.parse_args()
-    if args.verbosity in (Verbosity.MEDIUM, Verbosity.HIGH):
-        prod_mul_ctr: int = 0
-        pow_mul_ctr: int = 0
     if args.min_fib == -1:
         args.min_fib = args.max_fib
     main(
