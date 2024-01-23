@@ -38,3 +38,7 @@ Specifically, the number of matrix multiplications needed to calculate $A^n$ is 
 ## License
 
 See the [LICENSE](LICENSE.txt) file for license rights and limitations (MIT).
+
+## Emoji Section
+
+:godmode:
