@@ -8,7 +8,7 @@ class Verbosity(Enum):
     HIGH = 2
 
 
-def check_positive(value) -> int:
+def check_positive(value: str) -> int:
     ivalue = int(value)
     if ivalue <= 0:
         raise argparse.ArgumentTypeError("%s is an invalid positive int value" % value)
