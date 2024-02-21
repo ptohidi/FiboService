@@ -38,7 +38,7 @@ class FibMachine:
                 print(f"cache hit: {n}")
             return self.cache[n]
         prod: Matrix2x2 | None = None  # (1, 0, 0, 1)
-        A: Matrix2x2 = (1, 1, 1, 0)
+        mat_A: Matrix2x2 = (1, 1, 1, 0)
 
         n, read_ind = self.find_read_ind(n)
 
@@ -59,9 +59,9 @@ class FibMachine:
                     )
                 else:
                     if not prod:
-                        prod = A
+                        prod = mat_A
                     else:
-                        prod = mat_mul(prod, A)
+                        prod = mat_mul(prod, mat_A)
                         if verbosity in (Verbosity.MEDIUM, Verbosity.HIGH):
                             self.prod_mul_ctr += 1
                             if verbosity == Verbosity.HIGH:
@@ -91,22 +91,22 @@ class FibMachine:
                 break
             pow_A <<= 1
             if pow_A in self.prod_cache:
-                A = (
+                mat_A = (
                     self.cache[pow_A + 1],
                     self.cache[pow_A],
                     self.cache[pow_A],
                     self.cache[pow_A - 1],
                 )
             else:
-                A = mat_mul(A, A)
+                mat_A = mat_mul(mat_A, mat_A)
                 self.cache[pow_A + 1], self.cache[pow_A], self.cache[pow_A - 1] = (
-                    A[0],
-                    A[1],
-                    A[3],
+                    mat_A[0],
+                    mat_A[1],
+                    mat_A[3],
                 )
                 if test:
                     try:
-                        assert A[0] == A[1] + A[3]
+                        assert mat_A[0] == mat_A[1] + mat_A[3]
                     except AssertionError:
                         print(
                             "pow test failure: pow_A is {pow_A}, triplet is ({A[0]} = {A[1]} + {A[3]})"

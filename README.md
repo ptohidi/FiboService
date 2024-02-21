@@ -4,6 +4,7 @@
 
 FiboService is a Python package that I have made for practicing purposes. It calculates Fibonacci numbers using 2x2 matrix multiplication and caches the results for faster calculation.
 
+
 ## Theory
 
 The Fibonacci numbers are defined by the following recurrence relation:
@@ -37,3 +38,7 @@ Specifically, the number of matrix multiplications needed to calculate $A^n$ is 
 ## License
 
 See the [LICENSE](LICENSE.txt) file for license rights and limitations (MIT).
+
+## Emoji Section
+
+:godmode:
