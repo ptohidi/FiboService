@@ -1,5 +1,6 @@
 import argparse
 from enum import Enum
+from typing import Any
 
 
 class Verbosity(Enum):
@@ -8,8 +9,11 @@ class Verbosity(Enum):
     HIGH = 2
 
 
-def check_positive(value) -> int:
-    ivalue = int(value)
+def check_positive(value: Any) -> int:
+    try:
+        ivalue = int(value)
+    except ValueError:
+        raise argparse.ArgumentTypeError("%s is an invalid positive int value" % value)
     if ivalue <= 0:
         raise argparse.ArgumentTypeError("%s is an invalid positive int value" % value)
     return ivalue
